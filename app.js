@@ -17,13 +17,19 @@ app.listen(PORT, () => {
 const apiUrl = `https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=${API_KEY}`;
 
 
+
+
 axios.get(apiUrl)
     .then(response => {
-        
+        let arrayNews = [];
+        message = ``;
         const data = response.data.results;
-        for(let i=0; i<data.length; i++){
-            console.log(data[i].title);
+        for(let i=0; i<5; i++){
+            arrayNews.push([data[i].title, data[i].abstract, data[i].url]);
         }
+        console.log(arrayNews);
+
+        
     })
     .catch(error => {
         console.error('Error:', error);
