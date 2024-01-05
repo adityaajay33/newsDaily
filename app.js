@@ -24,10 +24,11 @@ axios.get(apiUrl)
         let arrayNews = [];
         message = ``;
         const data = response.data.results;
-        for(let i=0; i<5; i++){
+        for(let i=1; i<=5; i++){
             arrayNews.push([data[i].title, data[i].abstract, data[i].url]);
+            message = message + `  ${i}. ${data[i].title} \n Abstract: ${data[i].abstract} \n \n URL: ${data[i].url} \n \n`;
         }
-        console.log(arrayNews);
+        console.log(message);
 
         
     })
